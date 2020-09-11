@@ -1,0 +1,162 @@
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+
+            <form class="login100-form validate-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()" *ngIf="isLogin">
+                <span class="login100-form-title p-b-26">
+                    Welcome
+                </span>
+
+                <span class="login100-form-title p-b-48">
+                    <i class="zmdi zmdi-font"></i>
+                </span>
+
+                <div class="wrap-input100 validate-input">
+                    <input class="input100" type="text" formControlName="email">
+                    <span class="focus-input100" data-placeholder="Email"></span>
+                </div>
+
+
+                <div class="wrap-input100 validate-input">
+                    <span class="btn-show-pass">
+                        <i class="zmdi zmdi-eye"></i>
+                    </span>
+                    <input class="input100" type="password" formControlName="password">
+                    <span class="focus-input100" data-placeholder="Password"></span>
+                </div>
+                <div class="login-social w-100">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button class="btn btn-primary">
+                                <a class="text-white" href={{urlFacebook}}> Login Facebook</a>
+                               
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-success">
+                                <a class="text-white" href={{urlGmail}}>Login Gmail</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container-login100-form-btn">
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        <button class="login100-form-btn">
+                            Login
+                        </button>
+                    </div>
+                </div>
+
+                <div class="text-center p-t-115">
+                    <span class="txt1">
+                        Don’t have an account?
+                    </span>
+                    <span class="txt2" (click)="signUp()">Sign Up</span>
+
+                    <!-- <a class="txt2" >
+                        Sign Up
+                    </a> -->
+                </div>
+            </form>
+            <form class="login100-form validate-form" [formGroup]="signUpForm" (ngSubmit)="onSignUp()" *ngIf="!isLogin">
+
+                <span class="login100-form-title p-b-26">
+                    Register
+                </span>
+
+                <span class="login100-form-title p-b-48">
+                    <i class="zmdi zmdi-font"></i>
+                </span>
+
+                <div class="wrap-input100 validate-input">
+                    <input class="input100 has-val" type="text" formControlName="email">
+                    <span class="focus-input100" data-placeholder="Email"></span>
+                </div>
+                <p *ngIf="submitted && (f.email.value === null ||f.email.value.length===0)"
+                    class="invalid-feedback d-block" style="color: red;margin-bottom: 10px;">
+                    <span *ngIf="(f.email.value === null ||f.email.value.length===0)">Email is required</span>
+                </p>
+
+                <div class="wrap-input100 validate-input">
+                    <span class="btn-show-pass">
+                        <i class="zmdi zmdi-eye"></i>
+                    </span>
+                    <input class="input100 has-val" type="password" formControlName="password">
+                    <span class="focus-input100" data-placeholder="Password"></span>
+                </div>
+                <p *ngIf="submitted && (f.password.value === null ||f.password.value.length===0)"
+                    class="invalid-feedback d-block" style="color: red;margin-bottom: 10px;">
+                    <span *ngIf="(f.password.value === null ||f.password.value.length===0)">Password is required</span>
+                </p>
+
+                <div class="wrap-input100 validate-input">
+                    <span class="btn-show-pass">
+                        <i class="zmdi zmdi-eye"></i>
+                    </span>
+                    <input class="input100 has-val" type="text" formControlName="username">
+                    <span class="focus-input100" data-placeholder="Username"></span>
+                </div>
+                <p *ngIf="submitted && (f.username.value === null ||f.username.value.length===0)"
+                    class="invalid-feedback d-block" style="color: red;margin-bottom: 10px;">
+                    <span *ngIf="(f.username.value === null ||f.username.value.length===0)">Username is required</span>
+                </p>
+
+                <div class="wrap-input100 validate-input">
+                    <span class="btn-show-pass">
+                        <i class="zmdi zmdi-eye"></i>
+                    </span>
+                    <input class="input100 has-val" type="text" formControlName="fullname">
+                    <span class="focus-input100" data-placeholder="Fullname"></span>
+                </div>
+                <p *ngIf="submitted && (f.fullname.value === null ||f.fullname.value.length===0)"
+                    class="invalid-feedback d-block" style="color: red;margin-bottom: 10px;">
+                    <span *ngIf="(f.fullname.value === null ||f.fullname.value.length===0)">Fullname is required</span>
+                </p>
+
+                <div class="container-login100-form-btn">
+                    <div class="wrap-login100-form-btn">
+                        <div class="login100-form-bgbtn"></div>
+                        <button class="login100-form-btn">
+                            Login
+                        </button>
+                    </div>
+                </div>
+
+                <div class="text-center p-t-115">
+                    <div *ngIf="isLogin">
+                        <span class="txt1">
+                            Don’t have an account?
+                        </span>
+                        <span class="txt2" (click)="signUp()">Sign Up</span>
+                    </div>
+                    <div *ngIf="!isLogin">
+                        <span class="txt1">
+                            You have account. You can
+                        </span>
+                        <span class="txt2" (click)="login()">Login</span>
+                    </div>
+
+
+
+                    <!-- <a class="txt2" >
+                        Sign Up
+                    </a> -->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="lds-roller" *ngIf="showLoadingIndicator">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<div id="dropDownSelect1"></div>

@@ -1,0 +1,31 @@
+.course-title{
+    font-weight: bolder;
+    font-size: 2.5rem;
+}
+.course-detail{
+    margin:auto;
+    padding: 1% 1%;
+    .course-detail-img{
+        width: 100%;
+        margin: auto;
+        img{
+            width: 100%;
+            border-radius: 5%;
+            height: 120%;
+        }
+    }
+}
+.course-info-teacher{
+    width: 100%;
+}
+
+.color-font{
+    color: #373833;
+}
+.size-font{
+    font-size: 18px;
+    font-weight: bolder;
+}
+.text-title{
+    color: #999b16;
+}

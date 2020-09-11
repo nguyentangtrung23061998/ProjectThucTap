@@ -1,0 +1,23 @@
+.cdk-global-overlay-wrapper, .cdk-overlay-container {
+    z-index: 99999 !important;
+ }
+
+.mat-card-avatar{
+    display: none;
+}
+.mat-card-header{
+    display: block;
+}
+
+.font-size{
+    font-size: 18px;
+}
+
+.title_course{
+    font-size: 15px;
+    color: #e11a88;
+    font-weight: 500;
+}
+.format_card_content{
+    margin-bottom: 0px !important;
+}

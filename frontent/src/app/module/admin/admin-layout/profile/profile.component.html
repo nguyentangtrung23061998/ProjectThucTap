@@ -1,0 +1,171 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="content" class="content content-full-width">
+                    <!-- begin profile -->
+                    <div class="profile">
+                        <div class="profile-header">
+                            <!-- BEGIN profile-header-cover -->
+                            <div class="profile-header-cover"></div>
+                            <!-- END profile-header-cover -->
+                            <!-- BEGIN profile-header-content -->
+                            <div class="profile-header-content">
+                                <!-- BEGIN profile-header-img -->
+                                <div class="profile-header-img">
+                                    <img src="{{urlUpload}}/images/{{userObjNew.image}}" class="h-100" alt=""  (click)="hiddenfileinput.click()">
+                                    <input style="display: none" id="file" type="file" (change)="handleFileInput($event.target.files)"
+                                    #hiddenfileinput>
+                                </div>
+                                <!-- END profile-header-img -->
+                                <!-- BEGIN profile-header-info -->
+                                <div class="profile-header-info">
+                                    <h4 class="m-t-10 m-b-5">{{userObjNew.fullname}}</h4>
+                                    <p class="m-b-10">{{userObjNew.provider}}</p>
+                                    <button mat-raised-button class="mr-2" color="primary" (click)="uploadAVatar()">Upload avatar</button>
+                                    <button mat-raised-button class="mr-2" color="warn" (click)="editProfile()">Edit
+                                        Profile</button>
+                                    <button mat-raised-button class="mr-2" data-toggle="modal"
+                                        data-target="#modelPassword">Change Password</button>
+                                </div>
+                                <!-- END profile-header-info -->
+                            </div>
+                            <!-- END profile-header-content -->
+
+                        </div>
+                    </div>
+                    <!-- end profile -->
+                    <!-- begin profile-content -->
+                    <div class="profile-content">
+                        <!-- begin tab-content -->
+                        <div class="tab-content p-0">
+
+                            <!-- begin #profile-about tab -->
+                            <div class="tab-pane fade in active show" id="profile-about">
+                                <!-- begin table -->
+                                <div class="table-responsive">
+                                    <form [formGroup]="formProfile" (ngSubmit)="updateProfile()">
+                                        <table class="table table-profile">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="field">Username</td>
+                                                    <td *ngIf="edit;else editInput">
+                                                        {{userObjNew.username}}
+                                                    </td>
+                                                    <ng-template #editInput>
+                                                        <td>
+                                                            <mat-form-field class="w-25">
+                                                                <input matInput type="text" formControlName="username">
+                                                            </mat-form-field>
+                                                        </td>
+                                                    </ng-template>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="field">Fullname</td>
+                                                    <td *ngIf="edit;else editInput2">
+                                                        {{userObjNew.fullname}}
+                                                    </td>
+                                                    <ng-template #editInput2>
+                                                        <td>
+                                                            <mat-form-field class="w-25">
+                                                                <input matInput type="text" formControlName="fullname">
+                                                            </mat-form-field>
+                                                        </td>
+                                                    </ng-template>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="field">Email</td>
+                                                    <td>
+                                                        {{userObjNew.email}}
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td class="field">Create Date</td>
+                                                    <td>
+                                                        {{userObjNew.createddate | date:'medium'}}
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="field"></td>
+                                                    <td *ngIf="!edit">
+                                                        <button mat-raised-button class="mr-2"
+                                                            color="primary">Update</button>
+                                                        <button mat-raised-button class="mr-2" type="button"
+                                                            color="accent" (click)="cancel()">Cancel</button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </form>
+                                </div>
+                                <!-- end table -->
+                            </div>
+                            <!-- end #profile-about tab -->
+                        </div>
+                        <!-- end tab-content -->
+                    </div>
+                    <!-- end profile-content -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fade modal" id="modelPassword">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Profile</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form [formGroup]="formChangePassword" (ngSubmit)="onChangePassword()">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <mat-form-field class="example-full-width">
+                                <input matInput formControlName="currentPassword" type="password"
+                                    placeholder="Current Password">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-12">
+                            <mat-form-field class="example-full-width">
+                                <input matInput formControlName="newPassword" type="password"
+                                    placeholder="New Password">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-12">
+                            <mat-form-field class="example-full-width">
+                                <input matInput formControlName="confirmPassword" type="password"
+                                    placeholder="Confirm Password">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-12">
+                            <div *ngIf="f.confirmPassword.touched && f.confirmPassword.invalid" class="alert alert-danger">
+                                <!-- <div *ngIf="f.currentPassword.errors.required">Current Password is required.</div> -->
+                                <div *ngIf="f.confirmPassword.errors.required">Password is required.</div>
+                                <div *ngIf="f.confirmPassword.errors.confirmedValidator">Password and Confirm Password must be match.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="text-center mx-auto">
+                            <button mat-raised-button type="submit" id="btnStudent" class="btn btn-danger">
+                                Change Password
+                            </button>
+                            <button mat-raised-button data-dismiss="modal" class="btn btn-success">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

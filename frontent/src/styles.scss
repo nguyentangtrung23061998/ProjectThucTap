@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Times New Roman', Times, serif;background-color: #fff; }
+.cdk-overlay-connected-position-bounding-box {
+    z-index: 99999 !important;
+  }
+.cdk-overlay-container{
+    z-index: 10000;
+}
+.mat-card-header-text{
+  margin:0px !important;
+}
+
+.example-icon {
+  padding: 0 14px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.no-padding{
+  padding: 0px !important;
+}
+.no-margin{
+  margin:0px !important;
+}
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+  display: block;
+}
+.owl-loaded {
+  margin-left: 0% !important;
+}

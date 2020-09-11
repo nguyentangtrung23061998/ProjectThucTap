@@ -1,0 +1,114 @@
+<div id="myCarousel" class="carousel slide" data-interval="3000" data-ride="carousel">
+    <!-- Carousel indicators -->
+    <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+    <!-- Wrapper for carousel items -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="../../../../../assets/img/banner-phuong-phap-doc-quyen_1583740414.jpg" alt="First Slide" class="w-100" style="height: 700px;">
+            <div class="fix-carsel">
+                <h5>Past simple vs present perfect</h5>
+                <p>"start feeling irritated" or "start to feel irritated" which one is more natural in this context?.
+                </p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="../../../../assets/img/123.jpg" alt="Second Slide" class="w-100" style="height: 700px;">
+            <div class="fix-carsel">
+                <h5>Using in, out of, of like “Two in three or two out of three”</h5>
+                <p>how do you differentiate between past tense and past participle so easily?</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="../../../../assets/img/3.jpg" alt="Third Slide" class="w-100" style="height: 700px;">
+            <div class="fix-carsel">
+                <h5>Every three days there are two days the family has tomatoes</h5>
+                <p>Is it natural to use "thought-provoking" to describe a dinosaur exhibition for kids?</p>
+            </div>
+        </div>
+    </div>
+    <!-- Carousel controls -->
+    <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+
+<div id="popular-course">
+    <div class="popular-course-title w-100">
+        <h4 class="text-center font-weight-bolder">Popular Courses</h4>
+        <p>Your domain control panel is designed for ease-of-use and
+            allows for all aspects of your domains.</p>
+    </div>
+    <div class="popular-course-contain w-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4" *ngFor="let course of arrayCourse | slice:0:6">
+                    <div class="card card-block" data-toggle="modal" data-target="#modalOption"
+                        (click)="getIdCourse(course.course.id)">
+                        <h4 class="card-title text-right"><i class="material-icons">settings</i></h4>
+                        <img src="{{urlUpload}}/images/{{course.course.image}}" alt="Photo of sunset">
+                        <div class="w-100">
+                            <h5 class="card-title mt-3 mb-3">{{course.course.name}}
+                            </h5>
+                        </div>
+                        <p class="card-text">
+                            {{course.course.description}}
+                        </p>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row text-center">
+                <button class="btn button-style">More Course</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="subscribe-newletter">
+    <div class="container-fluid" style="width: 80%; margin:auto">
+        <div class="row align-items-center">
+            <div class="col-md-6 subscribe-newletter-left">
+                <h3 class="text-white text-lead text">Subscribe Newsletter</h3>
+                <span>Your domain control panel is designed for ease-of-use and allows for all aspects of your</span>
+            </div>
+            <div class="col-md-6 subscribe-newletter-right">
+                <h3 class="text-white text-lead text">Your domain control panel is</h3>
+                <form class="example-form d-flex align-items-center">
+                    <mat-form-field class="w-50 mr-2">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="Ex. pat@example.com">
+                    </mat-form-field>
+                    <button mat-raised-button color="warn">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="teacher-dashboard">
+    <div class="teacher-dashboard-title w-100">
+        <h4 class="text-center font-weight-bolder">Teacher teach course</h4>
+        <p>Your domain control panel is designed for ease-of-use and
+            allows for all aspects of your domains.</p>
+    </div>
+    <div class="teacher-dashboard-container w-100">
+        <div class='container-fluid'>
+            <owl-carousel [options]="carouselOptions" [items]="arrayTeacher"
+                [carouselClasses]="['owl-theme', 'row', 'sliding']">
+                <div class="item" *ngFor="let teacher of arrayTeacher;let i= index">
+                    <img class="slide-image" src="{{urlUpload}}/images/{{teacher.image}}" style="height:300px">
+                    <div class="slide-text">
+                        <h4 class="text-center">{{teacher.fullname}}</h4>
+                    </div>
+                </div>
+            </owl-carousel>
+        </div>
+    </div>
+</div>

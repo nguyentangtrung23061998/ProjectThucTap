@@ -1,0 +1,115 @@
+<div class="container pt-2">
+    <div class="teacher-mycourse">
+        <div class="container-fluid">
+            <div class="profile">
+                <div class="profile-header text-center">
+                    <!-- BEGIN profile-header-cover -->
+                    <div class="profile-header-cover"></div>
+                    <!-- END profile-header-cover -->
+                    <!-- BEGIN profile-header-content -->
+                    <div class="profile-header-content">
+                        <!-- BEGIN profile-header-img -->
+                        <div class="profile-header-img">
+                            <img mat-card-image *ngIf="userObjNew.provider === 'local'"
+                                src="{{urlUpload}}/images/{{userObjNew.image}}" alt="Photo of a Shiba Inu"
+                                style="width: 300px;height: 300px;border-radius: 50%;">
+                            <img mat-card-image *ngIf="userObjNew.provider !== 'local'"
+                                src="{{userObjNew.image}}" alt="Photo of a Shiba Inu"
+                                style="width: 300px;height: 300px;border-radius: 50%;">
+                        </div>
+                        <!-- END profile-header-img -->
+                        <!-- BEGIN profile-header-info -->
+                        <div class="profile-header-info">
+                            <h4 class="m-t-10 m-b-5">{{userObjNew.fullname}}</h4>
+                            <p class="m-b-10">{{userObjNew.provider}}</p>
+                            <!-- <input type="file" id="file" (change)="handleFileInput($event.target.files)">
+                            <br>
+                            <button mat-raised-button color="primary" class="mt-2" (click)="uploadVideo()">Upload Avatar</button> -->
+                            <h5>Change Avatar: <input type="file" id="file"
+                                    (change)="handleFileInput($event.target.files)"></h5>
+                            <button mat-raised-button color="primary" class="mt-2" (click)="uploadAvatar()">Upload
+                                Avatar</button>
+                        </div>
+                        <!-- END profile-header-info -->
+                    </div>
+                    <!-- END profile-header-content -->
+
+                </div>
+                <div class="mb-2">
+                    <button mat-raised-button class="mr-2" color="warn" (click)="editProfile()">Edit
+                        Profile</button>
+                </div>
+            </div>
+            <div class="profile-content">
+                <!-- begin tab-content -->
+                <div class="tab-content p-0">
+
+                    <!-- begin #profile-about tab -->
+                    <div class="tab-pane fade in active show" id="profile-about">
+                        <!-- begin table -->
+                        <div class="table-responsive">
+                            <form [formGroup]="formProfile" (ngSubmit)="updateProfile()">
+                                <table class="table table-profile">
+                                    <tbody>
+                                        <tr>
+                                            <td class="field">Username</td>
+                                            <td *ngIf="edit;else editInput">
+                                                {{userObjNew.username}}
+                                            </td>
+                                            <ng-template #editInput>
+                                                <td>
+                                                    <mat-form-field class="w-25">
+                                                        <input matInput type="text" formControlName="username">
+                                                    </mat-form-field>
+                                                </td>
+                                            </ng-template>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="field">Fullname</td>
+                                            <td *ngIf="edit;else editInput2">
+                                                {{userObjNew.fullname}}
+                                            </td>
+                                            <ng-template #editInput2>
+                                                <td>
+                                                    <mat-form-field class="w-25">
+                                                        <input matInput type="text" formControlName="fullname">
+                                                    </mat-form-field>
+                                                </td>
+                                            </ng-template>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="field">Email</td>
+                                            <td>
+                                                {{userObjNew.email}}
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td class="field">Create Date</td>
+                                            <td>
+                                                {{userObjNew.createddate | date:'medium'}}
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="field"></td>
+                                            <td *ngIf="!edit">
+                                                <button mat-raised-button class="mr-2" color="primary">Update</button>
+                                                <button mat-raised-button class="mr-2" type="button" color="accent"
+                                                    (click)="cancel()">Cancel</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                        <!-- end table -->
+                    </div>
+                    <!-- end #profile-about tab -->
+                </div>
+                <!-- end tab-content -->
+            </div>
+        </div>
+    </div>
+</div>
